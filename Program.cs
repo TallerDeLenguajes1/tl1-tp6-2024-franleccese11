@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.ComponentModel.DataAnnotations;
 using System.Timers;
 
 Console.WriteLine("Hello, World!");
@@ -89,4 +90,61 @@ do
         }
         }
 } while (menu>0 && menu <5);
+
+
+//CALCULADORA V2
+
+float num3=0;
+string cad3 = "";
+do
+{   
+    cad3 = Console.ReadLine();
+    
+} while (!float.TryParse(cad3,out num3));
+
+if(num3<0)
+{
+    Console.WriteLine("su valor absoluto es: "+ (-num3));
+}else
+{
+    Console.WriteLine("su valor absoluto es: "+ num3);
+}
+
+Console.WriteLine("su cuadrado es "+  (num3*num3));
+Console.WriteLine("su raiz cuadrada es "+ (Math.Sqrt(num3)));
+Console.WriteLine("su seno es: "+ (Math.Sin(num3)));
+Console.WriteLine("su coseno es: " + (Math.Cos(num3)));
+int num4 = (int) num3;
+Console.WriteLine("su parte entera es: "+ num4);
+
+
+
+Console.WriteLine("Ingrese 2 numeros de los que quiera determinar su maximo y minimo:");
+bool esnum3,esnum4;
+float num5=0,num6=0;
+do
+{
+   string cad4 = Console.ReadLine();
+    string cad5 = Console.ReadLine();
+    esnum3 = float.TryParse(cad4,out num5);
+    esnum4 = float.TryParse(cad5,out num6); 
+} while (!esnum3 &&  !esnum4);
+if (num5 >num6)
+{
+    Console.WriteLine("el maximo es: "+num5+" el minimo es: "+num6);
+}else
+{
+    if (num5 < num6)
+    {
+        Console.WriteLine("el maximo es: "+num6+" el minimo es: "+num5);
+    }else
+    {
+        Console.WriteLine("no existe maximo ni minimo porque ambos numeros son iguales");
+    }
+}
+
+
+
+
+
 
