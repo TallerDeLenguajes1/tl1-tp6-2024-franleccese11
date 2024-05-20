@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Timers;
 
 Console.WriteLine("Hello, World!");
@@ -61,7 +62,7 @@ do
         bool esnum2 = float.TryParse(cad2,out num2);
         if (esNum1 && esnum2)
         {
-            float resultado=0;
+            float resultado=124415631213;
             switch (menu)
             {
                 case 1:
@@ -83,9 +84,9 @@ do
                     Console.WriteLine("numero ingresado no valido");
                 break;
             }
-            if (resultado != 0)
+            if (resultado != 124415631213)
             {
-                Console.WriteLine("el resultado es "+ resultado);
+                Console.WriteLine($"el resultado de operar  {num1} con {num2} es igual a: {resultado}");
             }  
         }
         }
@@ -97,7 +98,8 @@ do
 float num3=0;
 string cad3 = "";
 do
-{   
+{   Console.WriteLine("-*-*-*CALCULADORA V2-*-*-*");
+    Console.WriteLine("ingrese un numero:");
     cad3 = Console.ReadLine();
     
 } while (!float.TryParse(cad3,out num3));
@@ -142,6 +144,128 @@ if (num5 >num6)
         Console.WriteLine("no existe maximo ni minimo porque ambos numeros son iguales");
     }
 }
+
+Console.WriteLine("ingrese una cadena de texto:");
+string caddena = Console.ReadLine();
+int longitud = caddena.Length;
+Console.WriteLine("ingrese una segunda cadena de texto:");
+string caddena2 = Console.ReadLine();
+string concatenacion = string.Concat(caddena,caddena2);
+Console.WriteLine("El resultado de concatenar ambas cadenas es: "+ concatenacion);
+string cadInicial = "";
+int inicial = 0;
+do
+{
+    Console.WriteLine("Ingrese el indice inicial para extraer la subcadena");
+    cadInicial = Console.ReadLine();
+} while (!int.TryParse(cadInicial,out inicial));
+string cadLongitud = null;
+
+Console.WriteLine("ingrese la longitud de la subcadena(opcional,presione enter para omitir esta funcionalidad.)");
+cadLongitud = Console.ReadLine(); 
+string subcadena= "";
+if (string.IsNullOrEmpty(cadLongitud))
+{
+    subcadena = concatenacion.Substring(inicial);
+}else
+{
+    int longitud2=0;
+    if (int.TryParse(cadLongitud,out longitud2))
+    {
+        subcadena = concatenacion.Substring(inicial, longitud2);            
+    }
+}
+
+Console.WriteLine("la subcadena es: "+ subcadena);
+Console.WriteLine("ingrese una nueva cadena de texto");
+string ncadena = Console.ReadLine();
+foreach (char item in ncadena)
+{
+    Console.WriteLine(item);
+}
+Console.WriteLine("ingrese la palabra que quiere consultar si se encuentra en la cadena");
+string aguja = Console.ReadLine();
+int indice = ncadena.IndexOf(aguja,StringComparison.OrdinalIgnoreCase);
+if (indice == -1)
+{
+    Console.WriteLine("la palabra no se encuentra en la cadena");
+
+}else
+{
+    Console.WriteLine("la palabra se encuentra en la cadena");
+}
+
+Console.WriteLine("cadena ingresada en mayusculas:" + ncadena.ToUpper());
+Console.WriteLine("cadena ingresada en minusculas:" + ncadena.ToLower());
+Console.WriteLine("ingrese una cadena de texto donde cada palabra este separada por una coma");
+string nuevaCadena = Console.ReadLine();
+string[] palabras = nuevaCadena.Split(",");
+foreach (string palabrita in palabras)
+{
+    Console.WriteLine(palabrita.Trim());    
+} 
+
+Console.WriteLine("ingrese un problema aritmetico simple:");
+string problema = Console.ReadLine();
+char[] operandos = {'+','-','*','/'};
+float numeral1,numeral2;
+if (problema.Contains('+'))
+{
+    
+    string[] sumandos = problema.Split("+");
+    if (float.TryParse(sumandos[0],out numeral1) && float.TryParse(sumandos[1],out numeral2))
+    {
+        float res = numeral1 + numeral2;
+        Console.WriteLine("el resultado es: "+ res);
+    } 
+    
+} else
+{
+    if (problema.Contains('-'))
+    {
+        string[] sumandos = problema.Split("-");
+        if (float.TryParse(sumandos[0],out numeral1) && float.TryParse(sumandos[1],out numeral2))
+        {
+            float res = numeral1 - numeral2;
+            Console.WriteLine("el resultado es: "+ res);
+        } 
+    }
+    else
+    {
+        if (problema.Contains('*'))
+        {
+            string[] sumandos = problema.Split("*");
+            if (float.TryParse(sumandos[0],out numeral1) && float.TryParse(sumandos[1],out numeral2))
+            {
+                float res = numeral1 * numeral2;
+                Console.WriteLine("el resultado es: "+ res);
+            }
+        } else
+        {
+            if (problema.Contains('/'))
+            {
+                string[] sumandos = problema.Split("/");
+            if (float.TryParse(sumandos[0],out numeral1) && float.TryParse(sumandos[1],out numeral2))
+            {
+                float res = numeral1 / numeral2;
+                Console.WriteLine("el resultado es: "+ res);
+            }   
+            }else
+            {
+                Console.WriteLine("no ingreso ningun simbolo aritmetico basico valido, los cuales son:");
+                foreach (char simbolo in operandos)
+                {
+                    Console.WriteLine(simbolo);
+                }
+
+            }
+        }
+    }
+}
+
+
+
+
 
 
 
